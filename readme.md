@@ -1,11 +1,11 @@
 ## ChatBox
 ### Database
-* Model 		- Message
-				- Group
-				- GroupMember
-* Migration 	- create_messages_table
-				- create_groups_table
-				- create_groups_members_table
+* Model 		+ Message
+				+ Group
+				+ GroupMember
+* Migration 	+ create_messages_table
+				+ create_groups_table
+				+ create_groups_members_table
 	+ messages : (Many-to-Many)
 		* id
 		* from (id user)
@@ -47,6 +47,15 @@ composer run-script post-update-cmd
 ``` 
 
 ### Create your .env 
+Exemple :
+```json
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=github_laravel_chatbox
+DB_USERNAME=root
+DB_PASSWORD=
+``` 
 
 ### Migrate database
 
