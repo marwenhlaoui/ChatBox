@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('chatbox','ChatBox\HomeController');
+Route::resource('chatbox','ChatBox\HomeController',['only'=>['index','show','update','destroy']]);

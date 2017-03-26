@@ -81,3 +81,12 @@
     resize: none;
     outline: none!important;
 }
+
+/* nav icons */ 
+.navbar-nav li a:hover{
+    background-color: #f5f5f5!important;
+}
+.navbar-nav i.ion{
+    font-size: 1.6em;
+    margin-top: -10px;
+} 

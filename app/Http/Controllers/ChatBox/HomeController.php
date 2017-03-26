@@ -4,9 +4,16 @@ namespace App\Http\Controllers\ChatBox;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Message;
+use App\Model\User;
 
 class HomeController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    } 
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,29 +21,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('app.chatbox');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        return view('app.index');
+    }  
 
     /**
      * Display the specified resource.
@@ -45,20 +31,14 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    {   
+        $data = Message::where('from',$id)
+                        ->orWhere('to',$id)
+                        ->orderBy('created_at','desc')
+                        ->get();
+        $user = User::find($id);
+        return view('app.show',compact('data','user'));
+    } 
 
     /**
      * Update the specified resource in storage.
@@ -67,9 +47,15 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
-        //
+        $msg = new Message();
+        $msg->from      = \Auth::user()->id;
+        $msg->to        = $id;
+        $msg->content   = $req->content;
+        $msg->type      = false;
+        $msg->save();
+        return redirect()->back();
     }
 
     /**

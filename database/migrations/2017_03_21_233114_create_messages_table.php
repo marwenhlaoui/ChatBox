@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->integer('to');
             $table->boolean('type');
             $table->text('content');
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
 
             $table->foreign('from')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
