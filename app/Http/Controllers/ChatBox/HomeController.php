@@ -36,8 +36,9 @@ class HomeController extends Controller
                         ->orWhere('to',$id)
                         ->orderBy('created_at','desc')
                         ->get();
+
         $user = User::find($id);
-        return view('app.show',compact('data','user'));
+        return view('app.show',compact('user','data'));
     } 
 
     /**
@@ -67,5 +68,18 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function api($id){  
+            $msg = Message::where('from',$id)
+                            ->orWhere('from',\Auth::user()->id)
+                            ->orWhere('to',$id)
+                            ->orWhere('to',\Auth::user()->id)
+                            ->orderBy('created_at','desc')
+                            ->get();
+            foreach ($msg as $key => $item) { 
+                $item->from = $item->from()->name;  
+            } 
+            return response()->json(['data' => $msg]);  
     }
 }

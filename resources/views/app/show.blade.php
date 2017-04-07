@@ -3,15 +3,15 @@
 @section('content')
 	<div class="container">
 		<div class="col-md-8 well-chat">
-			<div class="body-chat">
-			@foreach($data as $msg)
+			<div class="body-chat">	
+				@foreach($data as $item)
 				<div class="msg-chat">
-					<span class="user-img user-img-yellow">{{ ucfirst(str_limit($msg->from()->name,1,'')) }}</span>
-					<span class="user-name">{{ $msg->from()->name }}</span>
-					<span class="user-date">{{$msg->created_at}}</span>
-					<p class="user-text">{{$msg->content}}</p>
+					<span class="user-img"></span>
+					<span class="user-name">{{$item->from()->name}}</span>
+					<span class="user-date">{{$item->created_at}}</span>
+					<p class="user-text">{{$item->content}}</p>
 				</div>
-			@endforeach 	
+				@endforeach
 			</div>
 			<form class="form-group console-chat" action="{{ route('chatbox.update',$user->id) }}" method="post">
 				{{ csrf_field() }}
@@ -31,4 +31,43 @@
 			</div>
 		</div>
 	</div>
+@endsection
+@section('js')
+	<script type="text/javascript">
+		
+			 
+ /*
+				
+		setInterval(getMsg(), 5000);
+
+		function getMsg(){
+			var url = "{{route('api.chat',$user->id)}}";
+			var body = $('.body-chat');
+			var div = ""; 
+			$.get(url,function (data) {
+					console.log(data);
+					$.each(data.data,function(k,item){ 
+						div += '<div class="msg-chat"><span class="user-img user-img-yellow">'+item.from+'</span><span class="user-name">'+item.from+'</span><span class="user-date">'+item.created_at+'</span><p class="user-text">'+item.content+'</p></div>';
+					});
+				body.html(div);   
+			});
+
+		}*/
+
+
+		$(function() {
+		  setInterval(function() {
+		    var url = "{{route('api.chat',$user->id)}}";
+			var body = $('.body-chat');
+			var div = ""; 
+			$.get(url,function (data) {
+					console.log(data);
+					$.each(data.data,function(k,item){ 
+						div += '<div class="msg-chat"><span class="user-img"></span><span class="user-name">'+item.from+'</span><span class="user-date">'+item.created_at+'</span><p class="user-text">'+item.content+'</p></div>';
+					});
+				body.html(div);   
+			});
+		  },6000);
+		}); 
+	</script>
 @endsection

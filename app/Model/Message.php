@@ -11,4 +11,7 @@ class Message extends Model
 	public function from(){
 		return User::find($this->from);
 	}
+	public function to(){
+		return User::find($this->to);
+	}
 }

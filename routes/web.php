@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('chatbox','ChatBox\HomeController',['only'=>['index','show','update','destroy']]);
+Route::get('api/chat/{id}','ChatBox\HomeController@api')->name('api.chat');
