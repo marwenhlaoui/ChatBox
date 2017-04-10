@@ -1,75 +1,110 @@
-.well-chat{
-    min-height: calc(100vh - 80px);
-    background-color: rgba(0,0,0,.075);
-    padding: 20px 2%;
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Nova+Square');
+
+body{
+    font-family: 'Cabin Sketch', cursive;
+    /*font-family: 'Nova Square', cursive;*/
 }
-.well-chat .body-chat{
-height: calc(100vh - 120px);
-    overflow: auto;
-    padding: 3%;
-    margin: -20px -3%;
-    padding-bottom: 100px;
+.text-title{
+    padding: 4%;
+}
+.text-title2{
+    padding: 1%;
+}
+.card{
+    text-align: center;
+    border: 1px solid white;
+    padding: 2%;
+    box-shadow: 0px 0px 2px 1px #ccc, -10px 4px 50px 5px #ccc inset;
+    text-decoration: none;
+    color: white;
+    background-color: #ddd;
+    text-shadow: 1px 1px 1px #999;
+    width: 100%;
+    float: left;
+    margin: 10px 0;
+}
+.card:hover{
+    text-decoration: none;
+    color: white; 
+    box-shadow: 0px 0px 2px 1px #ccc, -10px 4px 50px 5px #999 inset;
+}
+.card i{
+    font-size: 4em;
+}
+.card h3{
+    
+}
+.img-user{
+background-image: url(http://vignette4.wikia.nocookie.net/kalbo-kinis-kintab/images/c/c5/Facebook-default-no-profile-pic.jpg);
+    width: 60px;
+    height: 60px;
+    background-size: 100%;
+    margin: -5px 1% 0px -2%;
 } 
-.well-chat .body-chat .msg-chat{
-	  
-} 
-.well-chat .body-chat .msg-chat .user-name{
-	font-family: fantasy;
+.ion-2x{
     font-size: 1.5em;
 }
-.well-chat .body-chat .msg-chat .user-img{
-    background-image: url(http://i1.wp.com/s0.wp.com/wp-content/themes/vip/metrouk/img/default-user.png);
-    width: 50px;
-    height: 50px;
+.allusers{
+    margin-top: 20px;
+        border-top: 4px dashed #eaeaea;
+    padding-top: 15px;
+}
+.text-max{
+flex: 1;
+    overflow: hidden;
+    padding-top: 1px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 70%;
+    position: absolute;
+}
+/* tchat room */ 
+.tchat{
+    min-height: calc(85vh - 100px);
+    max-height: calc(85vh - 100px);
+    overflow: auto;
+    overflow-x: hidden;
+}
+.tchat .msg-item p{
+    background-color: white;
+    padding: 10px 3%;
+    margin: 10px 1%;
+    font-family: sans-serif;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.075);
+    border-radius: 5px;
+    max-width: 100%;
+    
+}
+.tchat .msg-item .user{
+       
+}
+.img-profile{
+    background-image: url(http://vignette4.wikia.nocookie.net/kalbo-kinis-kintab/images/c/c5/Facebook-default-no-profile-pic.jpg);
+    width: 20px;
+    height: 20px;
     float: left;
     background-size: 100%;
-    margin: 2%;
-    box-shadow: 0px -2px 2px 1px #f5f5f5;
-    margin-top: 5px;
-} 
-.well-chat .body-chat .msg-chat .user-date{
-	float: right;
-    font-size: 0.8em;
-    line-height: 3;
+    background-repeat: no-repeat;
+    margin-right: 10px;
 }
-.well-chat .body-chat .msg-chat p.user-text{ 
-	background-color: white;
-    padding: 10px 2%;
-    box-shadow: 0px 1px 1px silver; 
-} 
-.well-chat .console-chat{
-    position: absolute;
-    bottom: 0;
-    background-color: white;
-    padding: 20px 1%;
-    margin-bottom: -5px;
-    margin-left: -3%;
-    border-top: 2px solid #757575;
-    float: left;
-    min-width: 100%;
+.console{
+    background-color: #ddd;
     max-height: 100px;
-    padding-bottom: 30px;
-    box-shadow: 0px -2px 3px silver;
+    margin-top: -25px;
+    padding: 10px 5px;
 }
-.well-chat .console-chat textarea{
+.console textarea{
     max-width: 100%;
-    min-width: 100%;
+    min-width: 105%;
+    margin: -5px 0 5px -1%;
+    max-height: 50px;
+    min-height: 50px;
     resize: none;
-    outline: none!important;
-    overflow: 
+    border-radius: 0px;
 }
-.well-chat .console-chat textarea{
+.item-user{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     max-width: 100%;
-    min-width: 100%;
-    resize: none;
-    outline: none!important;
 }
-
-/* nav icons */ 
-.navbar-nav li a:hover{
-    background-color: #f5f5f5!important;
-}
-.navbar-nav i.ion{
-    font-size: 1.6em;
-    margin-top: -10px;
-} 

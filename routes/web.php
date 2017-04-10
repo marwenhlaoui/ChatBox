@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
-
-Route::resource('chatbox','ChatBox\HomeController',['only'=>['index','show','update','destroy']]);
-Route::get('api/chat/{id}','ChatBox\HomeController@api')->name('api.chat');
+Route::get('/','HomeController@index')->name('home');
+Route::get('/home','HomeController@news')->name('news');
+Route::get('/users','HomeController@users')->name('users'); 
+Route::get('api/users','ApiController@users')->name('api.users');
+Route::get('message','TChatBox\PrivedController@index')->name('message');
+Route::get('message/{slug}','TChatBox\PrivedController@box')->name('message.box');
+Route::post('send/{id}','TChatBox\PrivedController@send')->name('message.send');

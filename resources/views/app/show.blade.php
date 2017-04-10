@@ -61,13 +61,13 @@
 			var body = $('.body-chat');
 			var div = ""; 
 			$.get(url,function (data) {
-					console.log(data);
+					//console.log(data);
 					$.each(data.data,function(k,item){ 
 						div += '<div class="msg-chat"><span class="user-img"></span><span class="user-name">'+item.from+'</span><span class="user-date">'+item.created_at+'</span><p class="user-text">'+item.content+'</p></div>';
 					});
 				body.html(div);   
 			});
-		  },6000);
+		  },1000);
 		}); 
 	</script>
 @endsection
